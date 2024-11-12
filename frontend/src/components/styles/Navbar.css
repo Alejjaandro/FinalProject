@@ -1,40 +1,39 @@
-.nav-container {
+.nav-container, .nav-container-admin {
     padding: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: grey;
-    box-shadow: 0 2px 2px black;
+    background-color: black;
     z-index: 1;
-
-    position: relative;
 }
 
-/* LEFT CONTAINER */
-.left-container {
-    display: none;
+.nav-container-admin {
+    background-color: goldenrod;
 }
 
-/* CENTER CONTAINER */
-.center-container ul {
-    display: flex;
-    gap: 0.5rem;
-    list-style: none;
-}
-
-.center-container ul a {
+.nav-container a, .nav-container-admin a {
+    color: white;
     text-decoration: none;
-    color: black;
+
     &:hover {
-        color: silver;
+        color: grey;
     }
+}
+
+/* LOGO */
+.logo img {
+    width: 3rem;
+}
+
+/* CENTER LINKS */
+.nav-about, .admin-options {
+    display: none;
 }
 
 /* RIGHT CONTAINER */
 .right-container {
     display: flex;
     align-items: center;
-    flex-direction: column;
     gap: 0.5rem;
 }
 
@@ -43,18 +42,20 @@
 
     padding: 0.5rem;
     border-radius: 0.25rem;
-    background-color: silver;
+    background-color: rgba(255, 255, 255, 0.726);
+    color: rgba(0, 0, 0, 0.63);
     text-decoration: none;
-    color: black;
 
     &:hover {
-        background-color: rgb(151, 151, 151);
+        background-color: white;
+        color: black;
     }
 }
 
 /* RIGHT CONTAINER / USER LOGGED */
 .right-container span {
     display: none;
+    color: white;
 }
 
 .userIcon {
@@ -76,59 +77,66 @@
 }
 
 /* SUB MENU */
-.sub-menu-wrap {
+.sub-menu-wrap, .sub-menu-wrap-admin {
     position: absolute;
-    top: 100%;
+    top: 56px;
     right: 0;
-    width: 40%;
 
     z-index: 1;
 }
 
-.sub-menu {
+.sub-menu, .sub-menu-admin {
     border-radius: 10%;
-    background-color: whitesmoke;
+    background-color: black;
     padding: 1rem;
     margin: 0.5rem;
 
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
 
+.sub-menu-admin {
+    background-color: goldenrod;
 }
 
 .sub-menu,
+.sub-menu-admin,
 .sub-menu a,
+.sub-menu-admin a,
 .sub-menu a svg,
+.sub-menu-admin a svg,
 .sub-menu button,
+.sub-menu-admin button,
 .sub-menu button svg {
     font-size: small;
 }
 
 .user-info {
-    color: black;
+    color: white;
     text-align: center;
 }
 
 .user-info hr {
-    background-color: black;
+    background-color: white;
     margin: 0.5rem auto;
 }
 
-.sub-menu a {
+.sub-menu a, .sub-menu-admin a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 
     text-decoration: none;
-    color: #333;
+    color: rgba(255, 255, 255, 0.712);
 
     &:hover {
         text-decoration: underline;
+        color: white;
     }
 }
 
-.sub-menu button {
+.sub-menu button, .sub-menu-admin button {
     background-color: inherit;
     display: flex;
     align-items: center;
@@ -144,8 +152,12 @@
 
 /* Mobile L styles */
 @media (min-width: 425px) {
-    .nav-container {
-        padding: 1rem;
+    .nav-about {
+        display: inline;
+    }
+
+    .nav-container-admin .nav-about {
+        display: none;
     }
 
     .right-container {
@@ -169,30 +181,21 @@
 
 /* Tablet styles */
 @media (min-width: 768px) {
-    .nav-container {
-        padding: 1rem;
-        font-size: x-large;
-    }
-
-    .left-container {
-        flex: 0.5;
-        display: inline;
-        font-size: xx-large;
-        font-weight: bold;
-    }
-
-    .center-container {
-        flex: 2;
-    }
-
-    .center-container ul {
+    .nav-container, .nav-container-admin {
+        font-size: large;
         justify-content: space-around;
     }
+    
+    .logo, .nav-container-admin .nav-about {
+        display: inline;
+    }
 
-    .right-container {
-        flex: 1;
-        flex-direction: row;
-        justify-content: flex-end;
+    .logo img {
+        width: 5rem;
+    }
+
+    .nav-contact {
+        display: inline;
     }
 
     .right-container a {
@@ -204,17 +207,33 @@
         height: 2.5rem;
     }
 
+    .sub-menu-wrap, .sub-menu-wrap-admin {
+        top: 82px;
+    }
+
     .sub-menu,
+    .sub-menu-admin,
     .sub-menu a,
+    .sub-menu-admin a,
     .sub-menu a svg,
+    .sub-menu-admin a svg,
     .sub-menu button,
-    .sub-menu button svg {
+    .sub-menu-admin button,
+    .sub-menu button svg,
+    .sub-menu-admin button svg {
         font-size: x-large;
     }
 }
 
 /* Desktop styles */
 @media (min-width: 1024px) {
+    .admin-options {
+        display: inline;
+    }
+
+    .admin-options-submenu {
+        display: none !important;
+    }
 
     .right-container a {
         font-weight: bold;
@@ -224,13 +243,5 @@
     .userIcon {
         width: 3rem;
         height: 3rem;
-    }
-
-    .sub-menu,
-    .sub-menu a,
-    .sub-menu a svg,
-    .sub-menu button,
-    .sub-menu button svg {
-        font-size: xx-large;
     }
 }
